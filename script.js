@@ -34,6 +34,22 @@ const lookup = {
 function rot13(encodedStr) {
   let decodedArr = []; // Your Result goes here
   // Only change code below this line
+	for(let i in encodedStr){
+
+		if(encodedStr.charCodeAt(i) >=65 && encodedStr.charCodeAt(i)<= 90 ){
+		let ascii = encodedStr.charCodeAt(i);
+		let code = ascii -65 +13; // -65 to get the exact number fro 0-25 as just adding 13 we cant get exact decoded char ex z= 90 and if we add 13 we get 103 we is not correct ascii no of decorded char
+		let exact= code%26;
+
+		let ansAscii= exact +65;
+		let char = String.fromCharCode(ansAscii);
+		decodedArr.push(char);
+			
+		}
+		else{
+		decodedArr.push(encodedStr[i]);	
+		}
+	}
 
   return; //return decodedArr
 }
